@@ -3,7 +3,7 @@ compatibility_date = "2024-08-15"
 
 [vars]
 DATABASE_URL=""
-JWT_SECRET = ""
+JWT_SECRET=""
 
 # [[kv_namespaces]]
 # binding = "MY_KV_NAMESPACE"
