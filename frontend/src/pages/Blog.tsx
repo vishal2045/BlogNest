@@ -1,5 +1,5 @@
 import { Appbar } from "../components/Appbar";
-import { FullBlog } from "../components/Fullblog";
+import { FullBlog } from "../components/FullBlog";
 import { Spinner } from "../components/Spinner";
 import { useBlog } from "../hooks";
 import {useParams} from "react-router-dom";
