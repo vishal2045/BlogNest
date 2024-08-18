@@ -34,7 +34,7 @@ export const Blogs = () => {
         <div className="">
         {blogs.map(blog => <BlogCard 
          id={blog.id}
-         authorname ={blog.author.name || "Vishal"}
+         authorname ={blog.author.name || "Anonymous"}
          title={blog.title}
          content={blog.content}
          publishedDate={"18th aug"} />) }
