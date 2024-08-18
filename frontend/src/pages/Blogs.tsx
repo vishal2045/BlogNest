@@ -32,20 +32,12 @@ export const Blogs = () => {
        <Appbar />
       <div  className="flex justify-center">
         <div className="">
-<<<<<<< Updated upstream
-        {blogs.map(blog => <BlogCard 
-         id={blog.id}
-         authorname ={blog.author.name || "Anonymous"}
-         title={blog.title}
-         content={blog.content}
-=======
         {blogs.map((blog,index) => <BlogCard 
         key={index}
          id={blog?.id}
          authorname ={blog?.author?.name || "Vishal"}
          title={blog?.title}
          content={blog?.content}
->>>>>>> Stashed changes
          publishedDate={"18th aug"} />) }
         
        
