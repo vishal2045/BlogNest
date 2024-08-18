@@ -2,8 +2,8 @@ name = "medium-blog-vishal"
 compatibility_date = "2024-08-15"
 
 [vars]
-DATABASE_URL=""
-JWT_SECRET=""
+DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiMWFiMjNiZDYtYjg0OS00OGM5LTk3MTctYjI2OWI5NzBjZTM2IiwidGVuYW50X2lkIjoiMzAwZGRkN2M4YjEzMmRmMmZkZDM5OTJhMGYxMDJhNjBhMWYyN2Y4NDY4Nzg5NGMxOWVkN2I1MWVhZTlmZmIwOSIsImludGVybmFsX3NlY3JldCI6IjIyZTBmNWY5LTc4ZDktNDg2Ny1hOTdjLTQxMjJhN2Q0MmNhOSJ9.TYk0eBiY9ucrirJiFO65JT583PxPzDUyyVEhKtxsbYg"
+JWT_SECRET="prod_jwt_secret"
 
 # [[kv_namespaces]]
 # binding = "MY_KV_NAMESPACE"
