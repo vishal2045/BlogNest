@@ -17,24 +17,26 @@ export const blogRouter = new Hono<{
 
   blogRouter.use("/*", async (c,next)=> {
     const authHeader = c.req.header("authorization") || "";
-    try {
-    const user = await verify(authHeader, c.env.JWT_SECRET);
-    if (user) {
-        c.set("userId",user.id as string);
-        await next();
-    } else {
-        c.status(403);
+      try {
+        const user = await verify(authHeader, c.env.JWT_SECRET);
+        if (user) {
+            c.set("userId",user.id as string);
+            await next();
+        } else {
+            c.status(403);
+            return c.json({
+                message: "You are not logged in"
+            })
+        }
+    }   catch(e) {
+     
         return c.json({
-            message: "You are not logged in"
+            message: `${e}`
         })
     }
-}   catch(e) {
-    c.status(403);
-    return c.json({
-        message: "You are not logged in"
-    })
-}
-  })
+    }
+   
+  )
 
 blogRouter.post('/', async (c) => {
     const body = await c.req.json();
@@ -94,6 +96,7 @@ blogRouter.post('/', async (c) => {
   })
 
   blogRouter.get('/bulk', async (c) => {
+    console.log("bulk")
     const prisma = new PrismaClient({
         datasourceUrl: c.env.DATABASE_URL,
     }).$extends(withAccelerate())
