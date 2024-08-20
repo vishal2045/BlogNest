@@ -1,48 +1,46 @@
-import { Link } from "react-router-dom";
+import { Blog } from "../hooks"
+import { AppBar } from "./AppBar"
+import { Avatar } from "./BlogCard"
 
-interface BlogCardProps {
-    authorName : string ;
-    title : string ;
-    content : string ;
-    publishedDate : string ;
-    id : string ;
-}
-
-export const BlogCard = ({authorName , title , content , publishedDate , id} : BlogCardProps) => {
+export const FullBlog = ({blog} : {blog : Blog}) => {
   return (
-    <Link to ={`/blog/${id}`}>
-        <div className="p-4 border-b border-slate-200 pb-4 w-screen max-w-screen-md cursor-pointer">
-            <div className="flex">
-                <div>
-                    <Avatar name={authorName} />
+    <div>
+        <AppBar />
+        <div className="flex justify-center">
+            <div className="grid grid-cols-12 px-10  w-full max-w-screen-xl">
+                <div className=" col-span-8 ">
+                    <div className="text-4xl font-extrabold pt-12">
+                        {blog.title}
+                    </div>
+                    <div className=" text-slate-500 pt-2">
+                        Posted on 2nd December
+                    </div>
+                    <div className="pt-4">
+                        {blog.content}
+                    </div>
                 </div>
-                <div className="font-extralight pl-2 text-sm flex justify-center flex-col"> {authorName} </div>
-                <div className="flex flex-col justify-center pl-2 "> <Circle />  </div>
-                <div className="pl-2 font-thin text-slate-500 text-sm flex justify-center flex-col"> {publishedDate} </div>
-            </div>
-            <div className="text-xl font-semibold pt-2">
-                {title}
-            </div>
 
-            <div className="text-md font-thin">
-                {content.slice(0 , 100) + "..."}
-            </div>
-
-            <div className="text-slate-500 text-sm font-thin pt-2">
-                {`${Math.ceil(content.length / 100)} minute(s) read`}
+                <div className=" col-span-4 pt-12">
+                    <div className="flex">
+                        <div className="pr-4 flex flex-col justify-center">
+                            <Avatar size="small" name = {blog.author.name || "Anonymous"} />
+                        </div>
+                        <div>
+                            <div className="text-slate-600">
+                                Author
+                            </div>
+                            <div className="text-2xl font-bold">
+                            {blog.author.name || "Anonymous"}
+                            </div>
+                            
+                            <div className="pt-2 text-slate-500">
+                            Random catch phrase about the author's ability to grab the user's attention
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </Link>
-  )
-}
-
-export function Circle(){
-    return <div className="h-1 w-1 rounded-full bg-slate-500">
     </div>
-}
-
-export function Avatar({name , size = "small"} : {name : string , size?: "small" | "big"}){
-    return <div className={`relative inline-flex items-center justify-center overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 ${size==='small'? "w-6 h-6" : "w-10 h-10"}`}>
-        <span className={`${size==='small' ? "text-xs" : "text-md"} text-gray-600 dark:text-gray-300`}>{name[0].toUpperCase()}</span>
-    </div>   
+  )
 }
